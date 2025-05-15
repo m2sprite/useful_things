@@ -16,6 +16,8 @@ PERFORMANCE CHECKLIST:
        Dependencies to clean:
          * chained calculations
          * pending loads and stores (keep loads and stores as close to L1 cache as possible)
+                            (know the size of L1 cache and try to keep loops to opperate within that mem address count size)
+                            EG 12900k has L1 cache size of 80kb for P-Cores (performance core intel parlance)
 
          LOADS AND STORES INFO (sizes of different caches vary depending on chip arch):
              CPU PER CORE INFO:
