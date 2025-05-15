@@ -30,6 +30,8 @@ PERFORMANCE CHECKLIST:
                 less awesome than L1 happens in 14 cycles or more
              } else if (MemAddressToLoadOrStore is in L3) {
                 even less awesome than L2 happens in 80 cycles or more
+             } else {
+                Fetching from main memory (THIS SUCKS)
              }
 
 
