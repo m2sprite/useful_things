@@ -17,17 +17,20 @@ PERFORMANCE CHECKLIST:
     a) UNROLL LOOP <- this increases this ratio workdoneinloop/loopmaintainance
     b) BREAK DEPENDENCY CHAIN <- this allows for the cpu to do ILP
        Dependencies to clean:
-         chained calculations
-         pending loads and stores
-         LOADS AND STORES INFO:
-             CPU CORE INFO:
-                In the CPU there is something called the register file
+         * chained calculations
+         * pending loads and stores
 
-                RegisterFile size: (very small)
-                    The register file produces values at maximum speed even faster than L1 chache when doing oppertations
-                    _L1_: size (32k)
-                    When we are about to load a new value in a loop for eg. Input[some_idx_we_haven_t_hit_before] the CPU first goes into L1 cache and checks if the mem address we're refering to is there already
-                        if it is there it returns it back and we don't go into main memory ( happens in 3 or 4 cycles )
+         LOADS AND STORES INFO (sizes vary depending on chip arch):
+             CPU CORE INFO:
+             if ( MemAddressToLoadOrStore is in RegisterFile ) {
+                aweosome ! fastest load or store ever
+             } else if (MemAddressToLoadOrStore is in L1 ) {
+                still pretty awesome happens in 3 or 4 cycles
+             } else if (MemAddressToLoadOrStore is in L2 ) {
+                less awesome than L1 happens in 14 cycles or more
+             } else if (MemAddressToLoadOrStore is in L3) {
+                even less awesome than L2 happens in 80 cycles or more
+             }
 
 
  COMBINE THE ABOVE WITH SIMD [ ]
