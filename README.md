@@ -4,3 +4,7 @@ ___
 ```
 tar -xvzf community_images.tar.gz
 ```
+when we read from memory its called a load
+when we write to memory it's called a store
+
+loads are very important to any piece of code
