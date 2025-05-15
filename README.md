@@ -4,7 +4,7 @@ ___
 ```
 tar -xvzf community_images.tar.gz
 ```
-
+___
 ```
 PERFORMANCE CHECKLIST:
  REMOVE WASTE [ ]
@@ -15,22 +15,22 @@ PERFORMANCE CHECKLIST:
     b) BREAK DEPENDENCY CHAIN <- this allows for the cpu to do ILP
        Dependencies to clean:
          * chained calculations
-         * pending loads and stores
+         * pending loads and stores (keep loads and stores as close to L1 cache as possible)
 
-         LOADS AND STORES INFO (sizes vary depending on chip arch):
-             CPU CORE INFO:
-             if ( MemAddressToLoadOrStore is in RegisterFile ) {
-                aweosome ! fastest load or store ever
-             } else if (MemAddressToLoadOrStore is in L1 ) {
-                still pretty awesome happens in 3 or 4 cycles
-             } else if (MemAddressToLoadOrStore is in L2 ) {
-                less awesome than L1 happens in 14 cycles or more
-             } else if (MemAddressToLoadOrStore is in L3) {
-                even less awesome than L2 happens in 80 cycles or more
-             } else {
-                Fetching from main memory (THIS SUCKS)
-             }
-
+         LOADS AND STORES INFO (sizes of different caches vary depending on chip arch):
+             CPU PER CORE INFO:
+                 if ( MemAddressToLoadOrStore is in RegisterFile ) {
+                    aweosome ! fastest load or store ever
+                 } else if (MemAddressToLoadOrStore is in L1 ) {
+                    still pretty awesome happens in 3 or 4 cycles
+                 } else if (MemAddressToLoadOrStore is in L2 ) {
+                    less awesome than L1 happens in 14 cycles or more
+                PER CPU (meaning the L3 cache and above are shared between all CPU cores):
+                 } else if (MemAddressToLoadOrStore is in L3) {
+                    even less awesome than L2 happens in 80 cycles or more
+                 } else {
+                    Fetching from main memory (THIS SUCKS)
+                 }
 
  COMBINE THE ABOVE WITH SIMD [ ]
 
