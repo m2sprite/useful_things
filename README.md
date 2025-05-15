@@ -6,9 +6,6 @@ tar -xvzf community_images.tar.gz
 ```
 
 ```
-
-
-
 PERFORMANCE CHECKLIST:
  REMOVE WASTE [ ]
     Don't use gay garbage collected languages
@@ -38,6 +35,4 @@ PERFORMANCE CHECKLIST:
  COMBINE THE ABOVE WITH SIMD [ ]
 
  COMBINE THE ABOVE WITH MULTITHREADING [ ]
-
-
 ```
