@@ -23,6 +23,10 @@ PERFORMANCE CHECKLIST:
                             EG 12900k has L1 cache size of 80kb for P-Cores (performance core intel parlance)
                             80kb = 640,000bits
 
+                            MUTLITHREADING [ ] if you see that you need to go over this limit maybe breakdown the problem into several L1 size problems
+                                               each running on its own thread
+                                               ( warning when going here make sure the setup/shutdown thread overhead isn't large proportional to amount of work on each thread )
+
          LOADS AND STORES INFO (sizes of different caches vary depending on chip arch):
              CPU PER CORE INFO:
                  if ( MemAddressToLoadOrStore is in RegisterFile ) {
@@ -31,15 +35,20 @@ PERFORMANCE CHECKLIST:
                     still pretty awesome happens in 3 or 4 cycles
                  } else if (MemAddressToLoadOrStore is in L2 ) {
                     less awesome than L1 happens in 14 cycles or more
+
                     ------------------shared between cpu cores------------------
+                    //NOTE THAT IF YOU GET TO THIS POINT YOU ARE DESTROYING A BIG CHUNK OF PERF INCREASE YOU WOULD GET FROM MULTITHREADING BECAUSE THESE RESOURCES ARE NO LONGER PER CORE
                  } else if (MemAddressToLoadOrStore is in L3) {
                     even less awesome than L2 happens in 80 cycles or more
                  } else {
                     Fetching from main memory (THIS SUCKS)
                  }
 
- MUTLITHREADING [ ]
-
-
  COMBINE THE ABOVE WITH SIMD [ ]
+
+REMARKS:
+    CORES ARE A PHYSICAL CONCEPT
+
+    THREADS ARE AN OS CONCEPT:
+        WE HOPE THAT WHEN WE LAUNCH A THREAD THE OS WILL ASSIGN IT TO IT'S OWN CORE
 ```
